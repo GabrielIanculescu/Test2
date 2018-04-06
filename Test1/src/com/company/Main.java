@@ -11,6 +11,7 @@ import java.awt.*;
 
 public class Main {
 
+    //this is a test
     public static class Node {
         String parent;
         String name;
@@ -26,8 +27,8 @@ public class Main {
        // Scanner sc = new Scanner(System.in);
        // line = sc.nextLine();
        // int n = Integer.parseInt(line);
-        HashMap<String, Node> nodes = new HashMap<String, Node>();
-        HashSet<String> nodesFree = new HashSet<String>();
+        HashMap<String, Node> nodes = new HashMap<>();
+        HashSet<String> nodesFree = new HashSet<>();
 
         int n = 5;
                 String[] l = new String[5];
@@ -49,7 +50,7 @@ public class Main {
                 nn = new Node();
                 nn.parent = null;
                 nn.name = p[0];
-                nn.children = new ArrayList<String>();
+                nn.children = new ArrayList<>();
                 nodes.put(p[0], nn);
                 if(!p[0].equals("C:")) {
                     nodesFree.add(p[0]);
@@ -60,7 +61,7 @@ public class Main {
             Node n1 = new Node();
             n1.parent = nn.name;
             n1.name = p[1];
-            n1.children = new ArrayList<String>();
+            n1.children = new ArrayList<>();
             nn.children.add(p[0]);
             nodes.put(p[1], n1);
         }
@@ -69,8 +70,8 @@ public class Main {
         Object[] nnn = nodesFree.toArray();
 
         do {
-            for (int i = 0; i < nnn.length; i++) {
-                String ss = (String) nnn[i];
+            for (Object aNnn : nnn) {
+                String ss = (String) aNnn;
                 Node nod = nodes.get(ss);
                 if (nod.parent == null) {
                     for (Node nod2 : collectionValues) {
@@ -149,12 +150,12 @@ public class Main {
         int N = A.length;
         int nEast=0;
         int pairs=0;
-        for (int i=0; i<N; i++){
-            if(A[i] == 0) {
+        for (int aA : A) {
+            if (aA == 0) {
                 nEast++;
             } else {
                 pairs = pairs + nEast;
-                if(pairs > 1000000000){
+                if (pairs > 1000000000) {
                     return -1;
                 }
             }
@@ -188,16 +189,16 @@ public class Main {
         ms.sort(A);
 
         boolean isPositive = false;
-        for (int i=0; i<N; i++) {
-            if(A[i] >= 0){
+        for (int aA : A) {
+            if (aA >= 0) {
                 isPositive = true;
                 break;
             }
         }
 
         if(isPositive){
-            int max1=0;
-            int max2 = 0;
+            int max1;
+            int max2;
             if(A[0]<0 && A[1]<0) {
                 max1 = A[0] * A[1] * A[N-1];
                 max2 = A[N-3] * A[N-2] * A[N-1];
